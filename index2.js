@@ -25,12 +25,34 @@ $(() => {
 
   //调用后端接口
   $.get(`http://54.224.193.99/api/airsakaapi/getwenzhang?id=${id}`, (res) => {
-    const { data } = res?.data || {};
+    const { data, child = [] } = res?.data || {};
     $("#title").html(data.title);
     $("#title2").html(data.title);
     $("#post__content").html(data.content);
 
     let str = "";
+
+    for (let i = 0; i < child.length; i++) {
+      str += `
+           <li class="widget-post">
+                      <div class="widget-post__img">
+                        <a href="post-single_sidebar.html"
+                          ><img src="http://54.224.193.99${child[i].img}" alt=""
+                        /></a>
+                      </div>
+                      <div class="widget-post__content">
+                        <div class="h4 widget-post__title">
+                          <a href="post-single_sidebar.html?id=${child[i].id}"
+                            >${child[i].title}</a
+                          >
+                        </div>
+                      </div>
+                    </li>
+        `;
+    }
+
+    $("#widget-post-list").html(str);
+
     console.log(data);
   });
 });

@@ -1181,6 +1181,10 @@ textarea.form-control {
 .new-item__image a {
   display: block;
 }
+.new-item__image a img {
+  width: 100%;
+  object-fit: cover;
+}
 .new-item:first-child .new-item__wrap,
 .columns-2 .new-item:nth-child(2) .new-item__wrap,
 .columns-3 .new-item:nth-child(2) .new-item__wrap,
