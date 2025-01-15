@@ -6,8 +6,9 @@ $(() => {
   const id = params.get("id") || 0;
 
   $.get("http://54.224.193.99/api/airsakaapi/getbaseinfo", (res) => {
-    const { data } = res?.data || {};
+    const { data, attr } = res?.data || {};
     const { banner_arr = [] } = data || {};
+    const { web_jianjie } = attr || {};
 
     let str = "";
 
@@ -28,6 +29,7 @@ $(() => {
     }
 
     $("#hero-slider").html(str);
+    $("#news-box").html(web_jianjie);
 
     $("#hero-slider").owlCarousel({
       items: 1,
@@ -49,40 +51,12 @@ $(() => {
     for (let i = 0; i < data.length; i++) {
       str += `
         <li class="nav-item menu-item-has-children">
-          <a href="index.html?id=${i}" class="nav-link">${data[i]?.title}</a>
+          <a href="index2.html?id=${i}">${data[i]?.title}</a>
         </li>
       `;
     }
 
     //将str 给到nav-box
     $("#nav-box").html(str);
-
-    const { children = [] } = data?.[id] || {};
-
-    let str2 = "";
-
-    for (let i = 0; i < children.length; i++) {
-      str2 += `
-          <div class="new-item col-md-6 col-lg-4">
-                <div class="new-item__wrap">
-                  <div class="new-item__image">
-                    <a href="post-single_sidebar.html?id=${children[i].id}"
-                      ><img src="http://54.224.193.99${children[i].img}" alt=""
-                    /></a>
-                  </div>
-                  <div class="new-item__info">
-                    <div class="h3 new-item__title">
-                      <a href="post-single_sidebar.html?id=${children[i].id}"
-                        >${children[i].title}</a
-                      >
-                    </div>
-                  </div>
-                </div>
-          </div>
-      `;
-    }
-    $("#news-box").html(str2);
-
-    console.log(children);
   });
 });

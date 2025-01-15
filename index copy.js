@@ -78,9 +78,6 @@ $(() => {
                         >${children[i].title}</a
                       >
                     </div>
-                    <div class="new-item__text">
-                      ${children[i].beizhu}12312312
-                    </div>
                   </div>
                 </div>
           </div>

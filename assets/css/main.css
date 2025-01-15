@@ -1170,6 +1170,9 @@ textarea.form-control {
   position: relative;
   margin-bottom: 30px;
 }
+.nav-item .active {
+  color: #a78943;
+}
 .new-item__wrap {
   padding-top: 30px;
   border-top: 1px solid #ececec;
@@ -1218,8 +1221,21 @@ textarea.form-control {
   display: none;
 }
 .new-item__title {
-  margin: 25px 0 21px;
+  /* margin: 25px 0 21px; */
+  margin-top: 10px;
   font-family: "Quattrocento", serif;
+}
+.new-item__text {
+  color: #888;
+  font-family: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 限制为2行 */
+  overflow: hidden; /* 隐藏超出部分 */
+  text-overflow: ellipsis; /* 显示省略号 */
+  line-height: 1.5; /* 行高，可以根据需要调整 */
+  max-height: 3em; /* 根据行高和行数计算最大高度 */
+  word-wrap: break-word;
 }
 .new-item__title a {
   color: #2b2b2b;
@@ -1406,7 +1422,7 @@ textarea.form-control {
   margin-top: 0;
 }
 .widget-post__title {
-  margin: 6px 0 15px;
+  /* margin: 6px 0 15px; */
   font-weight: normal;
   font-family: "Quattrocento", serif;
 }
