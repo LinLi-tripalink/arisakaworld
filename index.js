@@ -7,8 +7,7 @@ $(() => {
 
   $.get("http://54.224.193.99/api/airsakaapi/getbaseinfo", (res) => {
     const { data, attr } = res?.data || {};
-    const { banner_arr = [] } = data || {};
-    const { web_jianjie } = attr || {};
+    const { banner_arr = [], web_jianjie } = data || {};
 
     let str = "";
 
@@ -35,6 +34,9 @@ $(() => {
       items: 1,
       nav: true,
       dots: false,
+      loop: true, // 循环播放
+      autoplay: true, // 自动播放
+      autoplayTimeout: 3000, // 每个项目显示的时间（毫秒）
       navText: [
         '<span class="flaticon-left-chevron"></span>',
         '<span class="flaticon-right-chevron"></span>',

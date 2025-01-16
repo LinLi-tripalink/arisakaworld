@@ -33,6 +33,9 @@ $(() => {
       items: 1,
       nav: true,
       dots: false,
+      loop: true, // 循环播放
+      autoplay: true, // 自动播放
+      autoplayTimeout: 3000, // 每个项目显示的时间（毫秒）
       navText: [
         '<span class="flaticon-left-chevron"></span>',
         '<span class="flaticon-right-chevron"></span>',
@@ -79,7 +82,7 @@ $(() => {
                       >
                     </div>
                     <div class="new-item__text">
-                      ${children[i].beizhu}12312312
+                      ${children[i].beizhu}
                     </div>
                   </div>
                 </div>

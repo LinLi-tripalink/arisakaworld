@@ -1177,9 +1177,22 @@ textarea.form-control {
   padding-top: 30px;
   border-top: 1px solid #ececec;
 }
+.new-item__wrap:hover img {
+  transform: scale(1.1); /* 鼠标悬停时放大 */
+}
+
+.new-item__wrap:hover a {
+  color: #a78943;
+}
 .new-item + .blockquote .blockquote__text {
   padding-top: 30px;
   border-top: 1px solid #ececec;
+}
+.new-item__image {
+  height: 270px;
+  overflow: hidden;
+  border: 1px solid #999999;
+  border-radius: 12px;
 }
 .new-item__image a {
   display: block;
