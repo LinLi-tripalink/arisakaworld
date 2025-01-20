@@ -5,6 +5,13 @@ $(() => {
   const params = new URLSearchParams(url.search);
   const id = params.get("id") || 0;
 
+  // http://54.224.193.99/api/airsakaapi/setlog?id=&url=index
+
+  $.get(
+    "http://54.224.193.99/api/airsakaapi/setlog?id=&url=index",
+    (res) => {}
+  );
+
   $.get("http://54.224.193.99/api/airsakaapi/getbaseinfo", (res) => {
     const { data, attr } = res?.data || {};
     const { banner_arr = [], web_jianjie } = data || {};
@@ -53,7 +60,7 @@ $(() => {
     for (let i = 0; i < data.length; i++) {
       str += `
         <li class="nav-item menu-item-has-children">
-          <a href="index2.html?id=${i}">${data[i]?.title}</a>
+          <a href="index2.html?id=${data[i]?.id}">${data[i]?.title}</a>
         </li>
       `;
     }

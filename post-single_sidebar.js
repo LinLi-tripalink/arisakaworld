@@ -5,6 +5,11 @@ $(() => {
   const params = new URLSearchParams(url.search);
   const id = params.get("id") || 0;
 
+  $.get(
+    `http://54.224.193.99/api/airsakaapi/setlog?id=${id}&url=getwenzhang`,
+    (res) => {}
+  );
+
   //调用后端接口
   $.get("http://54.224.193.99/api/airsakaapi/getnavlist2", (res) => {
     const { data = [] } = res?.data || {};

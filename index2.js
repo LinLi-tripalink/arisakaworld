@@ -5,6 +5,11 @@ $(() => {
   const params = new URLSearchParams(url.search);
   const id = params.get("id") || 0;
 
+  $.get(
+    `http://54.224.193.99/api/airsakaapi/setlog?id=${id}&url=getwenzhang`,
+    (res) => {}
+  );
+
   $.get("http://54.224.193.99/api/airsakaapi/getbaseinfo", (res) => {
     const { data } = res?.data || {};
     const { banner_arr = [] } = data || {};
@@ -52,7 +57,7 @@ $(() => {
     for (let i = 0; i < data.length; i++) {
       str += `
         <li class="nav-item menu-item-has-children">
-          <a href="index2.html?id=${i}" class="nav-link ${
+          <a href="index2.html?id=${data[i]?.id}" class="nav-link ${
         id == i ? "active" : ""
       }">${data[i]?.title}</a>
         </li>
@@ -62,7 +67,8 @@ $(() => {
     //将str 给到nav-box
     $("#nav-box").html(str);
 
-    const { children = [] } = data?.[id] || {};
+    const arr = data?.find((item) => item.id == id);
+    const { children = [] } = arr || {};
 
     let str2 = "";
 

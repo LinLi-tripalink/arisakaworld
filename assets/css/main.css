@@ -952,6 +952,11 @@ textarea.form-control {
 }
 
 /*--- Main navigation ---*/
+.nav {
+  gap: 20px;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
 .nav a {
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
@@ -964,6 +969,10 @@ textarea.form-control {
   display: block;
   padding: 20px 0;
   border-top: 4px solid #ececec;
+  overflow-x: scroll;
+}
+.main-navigation::-webkit-scrollbar {
+  display: none; /* 隐藏滚动条 */
 }
 .sticky .main-navigation {
   border-top: none;
