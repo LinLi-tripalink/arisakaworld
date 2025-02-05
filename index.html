@@ -75,36 +75,8 @@
                   </div>
                 </div>
                 <div class="col-md-5 col-lg-4">
-                  <div class="top-bar__social text-right">
-                    <ul
-                      class="social-menu social-menu__right nav justify-content-md-end"
-                    >
-                      <li class="nav-item">
-                        <a href="#" class="nav-item"
-                          ><i class="mdi mdi-facebook"></i
-                        ></a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-item"
-                          ><i class="mdi mdi-instagram"></i
-                        ></a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-item"
-                          ><i class="mdi mdi-twitter"></i
-                        ></a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-item"
-                          ><i class="mdi mdi-pinterest"></i
-                        ></a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-item"
-                          ><i class="mdi mdi-medium"></i
-                        ></a>
-                      </li>
-                    </ul>
+                  <div id="contact-me" class="top-bar__social text-right">
+                    Contact Me
                   </div>
                 </div>
               </div>
@@ -564,22 +536,30 @@
             </div>
 
             <div class="col-lg-2 footer-widget footer__social-menu">
-              <div class="widget-social">
-                <div class="widget-title">We are social</div>
-                <ul class="social-menu social-menu__left nav animate">
-                  <li>
-                    <a href="#"><i class="mdi mdi-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="mdi mdi-instagram"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="mdi mdi-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="mdi mdi-pinterest"></i></a>
-                  </li>
-                </ul>
+              <div id="contact-box" class="widget-social">
+                <div class="widget-title">contact me</div>
+                <div>
+                  <input id="con-name" type="text" placeholder="Name" />
+                  <input
+                    style="margin-top: 20px"
+                    type="text"
+                    placeholder="Phone"
+                    id="con-tel"
+                  />
+                  <input
+                    style="margin-top: 20px"
+                    type="text"
+                    placeholder="Email"
+                    id="con-email"
+                  />
+                  <button
+                    style="margin-top: 20px; padding: 4px 10px"
+                    class="btn btn-primary"
+                    id="con-but"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -601,6 +581,41 @@
           </div>
         </div>
       </footer>
+
+      <div
+        class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Prompt</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Footer section end -->
 
       <!-- To top section start -->

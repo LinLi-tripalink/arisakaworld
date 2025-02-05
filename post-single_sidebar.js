@@ -5,13 +5,36 @@ $(() => {
   const params = new URLSearchParams(url.search);
   const id = params.get("id") || 0;
 
+  $("#contact-me").click(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth", // 平滑滚动
+    });
+  });
+
+  $("#con-but").click(() => {
+    const name = $("#con-name").val();
+    const tel = $("#con-tel").val();
+    const email = $("#con-email").val();
+
+    $.post("https://admin.arisakaworld.com/api/airsakaapi/setuser", {
+      name: name,
+      phone: tel,
+      email: email,
+    }).done(function (response) {
+      const { msg } = response;
+      $("#modalBody").text(msg);
+      $("#myModal").modal("show");
+    });
+  });
+
   $.get(
-    `http://54.224.193.99/api/airsakaapi/setlog?id=${id}&url=getwenzhang`,
+    `https://admin.arisakaworld.com/api/airsakaapi/setlog?id=${id}&url=getwenzhang`,
     (res) => {}
   );
 
   //调用后端接口
-  $.get("http://54.224.193.99/api/airsakaapi/getnavlist2", (res) => {
+  $.get("https://admin.arisakaworld.com/api/airsakaapi/getnavlist2", (res) => {
     const { data = [] } = res?.data || {};
     let str = "";
     console.log(data);
@@ -19,7 +42,7 @@ $(() => {
     for (let i = 0; i < data.length; i++) {
       str += `
           <li class="nav-item menu-item-has-children">
-            <a href="index2.html?id=${i}" class="nav-link">${data[i]?.title}</a>
+            <a href="index2.html?id=${data[i]?.id}" class="nav-link">${data[i]?.title}</a>
           </li>
         `;
     }
@@ -29,20 +52,22 @@ $(() => {
   });
 
   //调用后端接口
-  $.get(`http://54.224.193.99/api/airsakaapi/getwenzhang?id=${id}`, (res) => {
-    const { data, child = [] } = res?.data || {};
-    $("#title").html(data?.title);
-    $("#title2").html(data?.title);
-    $("#post__content").html(data.content);
+  $.get(
+    `https://admin.arisakaworld.com/api/airsakaapi/getwenzhang?id=${id}`,
+    (res) => {
+      const { data, child = [] } = res?.data || {};
+      $("#title").html(data?.title);
+      $("#title2").html(data?.title);
+      $("#post__content").html(data.content);
 
-    let str = "";
+      let str = "";
 
-    for (let i = 0; i < child.length; i++) {
-      str += `
+      for (let i = 0; i < child.length; i++) {
+        str += `
            <li class="widget-post">
                       <div class="widget-post__img">
                         <a href="post-single_sidebar.html"
-                          ><img src="http://54.224.193.99${child[i].img}" alt=""
+                          ><img src="https://admin.arisakaworld.com${child[i].img}" alt=""
                         /></a>
                       </div>
                       <div class="widget-post__content">
@@ -55,10 +80,11 @@ $(() => {
                       </div>
                     </li>
         `;
+      }
+
+      $("#widget-post-list").html(str);
+
+      console.log(data);
     }
-
-    $("#widget-post-list").html(str);
-
-    console.log(data);
-  });
+  );
 });

@@ -5,12 +5,35 @@ $(() => {
   const params = new URLSearchParams(url.search);
   const id = params.get("id") || 0;
 
+  $("#contact-me").click(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth", // 平滑滚动
+    });
+  });
+
+  $("#con-but").click(() => {
+    const name = $("#con-name").val();
+    const tel = $("#con-tel").val();
+    const email = $("#con-email").val();
+
+    $.post("https://admin.arisakaworld.com/api/airsakaapi/setuser", {
+      name: name,
+      phone: tel,
+      email: email,
+    }).done(function (response) {
+      const { msg } = response;
+      $("#modalBody").text(msg);
+      $("#myModal").modal("show");
+    });
+  });
+
   $.get(
-    `http://54.224.193.99/api/airsakaapi/setlog?id=${id}&url=getwenzhang`,
+    `https://admin.arisakaworld.com/api/airsakaapi/setlog?id=${id}&url=getnavlistzhang`,
     (res) => {}
   );
 
-  $.get("http://54.224.193.99/api/airsakaapi/getbaseinfo", (res) => {
+  $.get("https://admin.arisakaworld.com/api/airsakaapi/getbaseinfo", (res) => {
     const { data } = res?.data || {};
     const { banner_arr = [] } = data || {};
 
@@ -20,7 +43,7 @@ $(() => {
       str += `
         <div
               class="main-slider__item"
-              style="background-image: url('http://54.224.193.99${banner_arr[i]}');background-size: contain;"
+              style="background-image: url('https://admin.arisakaworld.com${banner_arr[i]}');background-size: contain;"
             >
               <div class="container">
                 <div class="item__content">
@@ -49,7 +72,7 @@ $(() => {
   });
 
   //调用后端接口
-  $.get("http://54.224.193.99/api/airsakaapi/getnavlist2", (res) => {
+  $.get("https://admin.arisakaworld.com/api/airsakaapi/getnavlist2", (res) => {
     const { data = [] } = res?.data || {};
     let str = "";
     console.log(data);
@@ -78,7 +101,7 @@ $(() => {
                 <div class="new-item__wrap">
                   <div class="new-item__image">
                     <a href="post-single_sidebar.html?id=${children[i].id}"
-                      ><img src="http://54.224.193.99${children[i].img}" alt=""
+                      ><img src="https://admin.arisakaworld.com${children[i].img}" alt=""
                     /></a>
                   </div>
                   <div class="new-item__info">

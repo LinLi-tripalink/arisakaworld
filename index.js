@@ -5,14 +5,37 @@ $(() => {
   const params = new URLSearchParams(url.search);
   const id = params.get("id") || 0;
 
-  // http://54.224.193.99/api/airsakaapi/setlog?id=&url=index
+  $("#contact-me").click(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth", // 平滑滚动
+    });
+  });
+
+  $("#con-but").click(() => {
+    const name = $("#con-name").val();
+    const tel = $("#con-tel").val();
+    const email = $("#con-email").val();
+
+    $.post("https://admin.arisakaworld.com/api/airsakaapi/setuser", {
+      name: name,
+      phone: tel,
+      email: email,
+    }).done(function (response) {
+      const { msg } = response;
+      $("#modalBody").text(msg);
+      $("#myModal").modal("show");
+    });
+  });
+
+  // https://admin.arisakaworld.com/api/airsakaapi/setlog?id=&url=index
 
   $.get(
-    "http://54.224.193.99/api/airsakaapi/setlog?id=&url=index",
+    "https://admin.arisakaworld.com/api/airsakaapi/setlog?id=&url=index",
     (res) => {}
   );
 
-  $.get("http://54.224.193.99/api/airsakaapi/getbaseinfo", (res) => {
+  $.get("https://admin.arisakaworld.com/api/airsakaapi/getbaseinfo", (res) => {
     const { data, attr } = res?.data || {};
     const { banner_arr = [], web_jianjie } = data || {};
 
@@ -22,7 +45,7 @@ $(() => {
       str += `
         <div
               class="main-slider__item"
-              style="background-image: url('http://54.224.193.99${banner_arr[i]}');background-size: contain;"
+              style="background-image: url('https://admin.arisakaworld.com${banner_arr[i]}');background-size: contain;"
             >
               <div class="container">
                 <div class="item__content">
@@ -52,7 +75,7 @@ $(() => {
   });
 
   //调用后端接口
-  $.get("http://54.224.193.99/api/airsakaapi/getnavlist2", (res) => {
+  $.get("https://admin.arisakaworld.com/api/airsakaapi/getnavlist2", (res) => {
     const { data = [] } = res?.data || {};
     let str = "";
     console.log(data);
