@@ -88,7 +88,7 @@ $(() => {
     }
 
     //将str 给到nav-box
-    $("#nav-box").html(str);
+    $(".nav-box").html(str);
 
     const arr = data?.find((item) => item.id == id);
     const { children = [] } = arr || {};

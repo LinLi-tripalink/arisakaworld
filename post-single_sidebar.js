@@ -48,7 +48,7 @@ $(() => {
     }
 
     //将str 给到nav-box
-    $("#nav-box").html(str);
+    $(".nav-box").html(str);
   });
 
   //调用后端接口

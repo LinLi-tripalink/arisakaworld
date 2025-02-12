@@ -977,7 +977,7 @@ textarea.form-control {
   border-top: 4px solid #ececec;
   overflow-x: scroll;
   padding: 0 10px;
-  background-color: #000;
+  background-color: #000 !important;
 }
 .main-navigation::-webkit-scrollbar {
   display: none; /* 隐藏滚动条 */
@@ -987,11 +987,23 @@ textarea.form-control {
   padding: 0;
 }
 .sticky .main-navigation li a {
-  padding: 20px 0;
+  /* padding: 20px 0; */
 }
 .sticky .main-navigation li .sub-menu a {
   padding: 10px 0;
 }
+@media only screen and (min-width: 992px) {
+  .nav-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav-pc {
+    display: none !important;
+  }
+}
+
 .main-navigation ul li {
   position: relative;
 }
